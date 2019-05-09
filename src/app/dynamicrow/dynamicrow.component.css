@@ -1,0 +1,6 @@
+.flex-container {
+  display: flex;
+}
+.items{
+  align-items: flex-end;
+}

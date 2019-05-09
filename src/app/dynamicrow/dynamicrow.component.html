@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header">
+    <div class="items">
+      <button data-toggle="collapse" data-target="#demo">Collapsible</button>
+      <button (click)="onAdd()">Add</button>
+    </div>
+  </div>
+  <div class="card-body" id="demo" class="collapse">
+    <table class=table>
+      <thead>
+          <th class="col-md-6">Name</th>
+          <th class="col-md-6">Address</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of name">
+          <td class="col-md-6">{{item}}</td>
+          <td class="col-md-6">{{item}}</td>
+        </tr>
+        <tr *ngIf="flag">
+          <td class="col-md-6">
+              <input type="text" #input1 >
+          </td>
+          <td class="col-md-6">
+              <input type="text" #input2>
+          </td>
+
+          <button type="button" class="btn btn-primary"  (click)="addRecord(input1.value,input2.value)">Add</button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+

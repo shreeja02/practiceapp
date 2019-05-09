@@ -1,0 +1,115 @@
+<!-- <form>
+<mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Question"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Answer type</mat-label>
+      <mat-select  name="food">
+        <mat-option *ngFor="let item of itemOption" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-button color="warn" (click)="onSelectedValue()">hi</button>
+  </form> -->
+  <div class=container>
+    <div class=row>
+      <div class=col-md-3>
+        <label *ngIf="label==='';else labelDiv">No label to show. Please add one.</label>
+      </div>
+      <ng-template #labelDiv>
+        {{label}}
+      </ng-template>
+      <div class=col-md-9>
+        <div class=row>
+            <div class=col-md-3>
+                <button mat-raised-button data-toggle="modal" data-target="#myModal">Ad label</button>
+            </div>
+            <div class=col-md-3>
+                <button color="warn" data-toggle="modal" data-target="#myModalQuestionnire">Add questionnire</button>
+            </div>
+            <div class=col-md-3>
+                <button color="warn" (click)="onSave()">Preview</button>
+            </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body">
+
+            <ckeditor [editor]=Editor (change)="onChange($event)"
+              [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic' ] }" >
+            </ckeditor>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="onSave()">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div id="myModalQuestionnire" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          &nbsp;
+
+        </div>
+        <div class="modal-body">
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Add your question</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text">Answer type</label>
+            </div>
+            <select class="custom-select" (change)="getSelectedItem($event.target.value)">
+              <option *ngFor="let item of itemOption">{{item}}</option>
+            </select>
+          </div>
+
+          <div *ngIf="starFlag">
+          <app-starrating></app-starrating>
+        </div>
+
+        <div *ngIf="textFlag">
+          <app-text></app-text>
+        </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="onSave()">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
